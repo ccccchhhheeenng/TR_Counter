@@ -20,15 +20,14 @@ if result is None:
     exit()
 tmp=int(input("查詢進站輸入1,出站輸入0\n"))
 
-title="車站 "+result+" 的進站人數"
-file_name=title
+title=result+"車站的"
 if tmp:
     sort_text="gateInComingCnt"
-    file_name+="進站"
+    title+="進站"
 else:
     sort_text="gateOutGoingCnt"
-    file_name+="出站"
-
+    title+="出站"
+title+="人數"
 filtered_data = list(filter(lambda x: x["staCode"] == target_sta, data))
 gate_in_counts = [int(item["gateInComingCnt"]) for item in filtered_data]
 dates=[item["trnOpDate"] for item in filtered_data]
