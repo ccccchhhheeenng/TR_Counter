@@ -14,9 +14,12 @@ with open("station_list.json", "r", encoding="utf-8") as file:
 	station_data = json.load(file)
 
 target_sta=str(input("輸入想要查詢的車站編號\n"))
+result = next((item["name"] for item in station_data if item["stationCode"] == target_sta), None)
+if result is None:
+    print("查無此車站編號")
+    exit()
 tmp=int(input("查詢進站輸入1,出站輸入0\n"))
 
-result = next((item["name"] for item in station_data if item["stationCode"] == target_sta), None)
 title="車站 "+result+" 的進站人數"
 file_name=title
 if tmp:
