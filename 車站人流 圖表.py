@@ -2,7 +2,6 @@ import json
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
-
 zh_font = fm.FontProperties(fname="C:/Windows/Fonts/msjh.ttc")
 fig = plt.figure(figsize=(19.2, 10.8), dpi=100)
 
@@ -33,12 +32,15 @@ gate_in_counts = [int(item["gateInComingCnt"]) for item in filtered_data]
 dates=[item["trnOpDate"] for item in filtered_data]
 formatted_dates = [date[-4:] for date in dates]
 
-plt.plot(formatted_dates, gate_in_counts)
+plt.plot(formatted_dates, gate_in_counts,marker='o', linestyle='-', color='b')
 plt.grid(True)
+
 plt.title(title,fontproperties=zh_font)
 plt.xticks(rotation=45,fontsize=8)
 plt.xlabel("日期",fontproperties=zh_font)
 plt.ylabel("人數",fontproperties=zh_font)
+plt.tight_layout()
 plt.savefig(title, dpi=100, bbox_inches='tight')
+
 plt.show()
 print("圖表已成功儲存為 "+title+".png")
